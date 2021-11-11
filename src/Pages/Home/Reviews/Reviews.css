@@ -1,0 +1,11 @@
+.dataGrids{
+    box-shadow: 2px 2px 2px 2px gray;
+}
+.dataGridd{
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    grid-gap: 10px;
+}
+.sise{
+    height: 200px;
+}

@@ -1,0 +1,9 @@
+.left{
+    text-align: left;
+    border-bottom: 2px solid gray;
+}
+.dataGrid{
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    grid-gap: 5px;
+}
