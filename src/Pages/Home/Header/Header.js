@@ -1,16 +1,17 @@
 import * as React from 'react';
-import { Nav } from 'react-bootstrap';
+import { Button, Nav } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import './Header.css';
 import { LinkContainer } from 'react-router-bootstrap';
+import UseAuth from '../../Firebase/UseAuth';
 
 
 
 
 const Header = () => {
-
+    const { user, logout } = UseAuth();
     return (
         <div className="bg-light">
             <Box sx={{ flexGrow: 1 }}>
@@ -26,15 +27,27 @@ const Header = () => {
                             <LinkContainer to="/about">
                                 <Nav.Link className="colorr">About</Nav.Link>
                             </LinkContainer>
-                            <LinkContainer to="/order">
-                                <Nav.Link className="colorr">Manage my order</Nav.Link>
+                            <LinkContainer to="/products">
+                                <Nav.Link className="colorr">Products</Nav.Link>
                             </LinkContainer>
-                            <LinkContainer to="/dashboard">
-                                <Nav.Link className="colorr">Dashboard</Nav.Link>
-                            </LinkContainer>
-                            <LinkContainer to="/login">
-                                <Nav.Link className="colorr">Login</Nav.Link>
-                            </LinkContainer>
+
+
+
+                            {
+                                user?.email
+                                    ? <div className="navv">
+
+                                        <LinkContainer to="/dashboard">
+                                            <Nav.Link className="colorr">Dashboard</Nav.Link>
+                                        </LinkContainer>
+                                        <Button onClick={logout}>Logout</Button>
+                                    </div>
+
+                                    :
+                                    <LinkContainer to="/login">
+                                        <Nav.Link className="colorr">Login</Nav.Link>
+                                    </LinkContainer>
+                            }
 
 
                         </div>

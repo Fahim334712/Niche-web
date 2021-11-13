@@ -1,39 +1,41 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { Button } from 'react-bootstrap';
+
+import Details from '../../Details/Details';
 import './ProductsHome.css';
 
-const ProductsHome = () => {
-    const [datas, setDatas] = useState([]);
-    useEffect(() => {
-        fetch('./homedata.json')
-            .then(res => res.json())
-            .then(data => setDatas(data));
-    }, [])
+const ProductsHome = ({ data }) => {
+    const { name, picture, index, balance, company } = data;
+    const [open, setOpen] = React.useState(false);
+    const handleOpen = () => setOpen(true);
+    const handleClose = () => setOpen(false);
     return (
-        <div className="mt-3 container">
-            <h2 className="left container ">Exploring Devices...</h2>
-            <div className="dataGrid">
-                {
-                    datas.map(data => <div key={data._id}>
-                        {
-                            data.index < 6 && <div className="card">
-                                <img className="card-img-top" src={data.picture} alt="" />
+        <>
+            <div className="mt-3 container">
+                <div>
+                    {
+                        index < 6 &&
+                        <div>
+                            <img className="picSize" src={picture} alt="" />
+                            <h6>Model : <span className="fw-bold">{name}</span></h6>
+                            <h6>Price : <span className="fw-bold">{balance}</span></h6>
+                            <h6>Company : <span className="fw-bold">{company}</span></h6>
 
-                                <div className="card-body">
-                                    <h5 className="card-title">fahim</h5>
-
-                                </div>
-                                <div className="card-footer">
-                                    <Button variant="success">Booking Now</Button>
-                                </div>
+                            <div className="card-footer">
+                                <Button onClick={handleOpen} variant="success">Buy Now</Button>
                             </div>
-                        }
+                        </div>
 
-
-                    </div>)
-                }
+                    }
+                </div>
             </div>
-        </div>
+            <Details
+                data={data}
+                open={open}
+                handleClose={handleClose}
+            ></Details>
+
+        </>
     );
 };
 

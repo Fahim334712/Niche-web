@@ -1,0 +1,13 @@
+.candy{
+    width: 730px;
+}
+.lk{
+    border-top: 2px solid darkviolet;
+    margin-left: 10px;
+    border-bottom: 2px solid darkviolet;
+}
+@media only screen and (max-width:688px){
+    .candy{
+        width: 400px;
+    }
+}
