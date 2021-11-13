@@ -2,7 +2,13 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+# About this cite
+### Its is niche website,Its a demu site ,day by day increasing this develop site
+* Its a calculator shop site
+* An Admin panel create this web,contro this site
+* many products has this web
+* Using Firebase authentication
+* Calculator store shop
 
 In the project directory, you can run:
 
